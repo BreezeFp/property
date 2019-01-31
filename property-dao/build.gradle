@@ -1,0 +1,5 @@
+archivesBaseName = 'property-dao'
+
+dependencies {
+    compile project(':property-entity')
+}

@@ -1,0 +1,12 @@
+rootProject.name = 'property-parent'
+
+include 'property-config'
+include 'property-dao'
+include 'property-entity'
+include 'property-admin-service'
+include 'property-admin-api'
+include 'property-mobile-api'
+include 'property-mobile-service'
+include 'property-security'
+include 'property-common'
+

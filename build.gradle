@@ -1,0 +1,67 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'com.lysj.property'
+    version = '0.0.1'
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+
+    // java编译的时候缺省状态下会因为中文字符而失败
+    [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
+
+    repositories {
+        maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        maven{url 'https://mvnrepository.com/'}
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+    
+    dependencyManagement {
+        imports {
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.RELEASE'
+        }
+    }
+}
+
+subprojects {
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/java'
+            }
+            resources {
+                srcDir 'src/main/java'
+                srcDir 'src/main/resources'
+            }
+        }
+    }
+
+    dependencies {
+        compile 'com.baomidou:mybatis-plus-boot-starter:3.0.7.1'
+        compileOnly 'org.projectlombok:lombok:1.18.4'
+    }
+}
+
+configure(rootProject) {
+    apply plugin: 'idea'
+    apply plugin: 'maven'
+}

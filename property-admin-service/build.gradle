@@ -1,0 +1,7 @@
+apply plugin: 'idea'
+
+archivesBaseName = 'property-admin-service'
+
+dependencies {
+    compile project(':property-dao')
+}

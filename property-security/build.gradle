@@ -1,0 +1,10 @@
+apply plugin: 'idea'
+
+archivesBaseName = 'property-security'
+
+dependencies {
+    compile project(':property-common')
+    compile project(':property-dao')
+    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'io.jsonwebtoken:jjwt:0.9.1'
+}

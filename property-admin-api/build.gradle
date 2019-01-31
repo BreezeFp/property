@@ -1,0 +1,11 @@
+apply plugin: 'idea'
+
+archivesBaseName = 'property-admin-api'
+
+dependencies {
+    compile project(':property-config')
+    compile project(':property-security')
+    compile project(':property-admin-service')
+    compile 'org.springframework.boot:spring-boot-starter-web'
+//    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+}

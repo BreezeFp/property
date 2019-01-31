@@ -1,0 +1,9 @@
+ apply plugin: 'idea'
+ 
+ archivesBaseName = 'property-config'
+
+ dependencies {
+     compile 'org.postgresql:postgresql:42.2.5'
+     compile 'com.alibaba:druid-spring-boot-starter:1.1.10'
+
+ }
