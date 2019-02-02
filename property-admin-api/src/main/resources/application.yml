@@ -58,7 +58,7 @@ spring:
     out-of-order: true
   datasource:
     url: jdbc:postgresql://localhost:5432/property
-    username: postgres
+    username: property
     password: 123456
 
 ---
@@ -72,5 +72,5 @@ spring:
   profiles: produce
   datasource:
     url: jdbc:postgresql://localhost:5432/property
-    username: postgres
+    username: property
     password: 123456
