@@ -17,7 +17,7 @@ public class AuthControllerTest extends BaseTest {
     public void register() throws Exception {
 
         mockMvc.perform(post("/auth/register")
-                .param("username", "admin")
+                .param("username", "user")
                 .param("password", "111111"))
                 .andExpect(status().isOk());
 
