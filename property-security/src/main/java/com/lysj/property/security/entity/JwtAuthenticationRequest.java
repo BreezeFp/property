@@ -1,4 +1,4 @@
-package com.lysj.property.security.service;
+package com.lysj.property.security.entity;
 
 import java.io.Serializable;
 

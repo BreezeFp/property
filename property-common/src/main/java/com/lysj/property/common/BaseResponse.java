@@ -9,8 +9,8 @@ import lombok.Data;
 @Data
 public class BaseResponse {
 
-    private Integer statusCode;
+    protected Integer statusCode;
 
-    private String statusMsg;
+    protected String statusMsg;
 
 }
