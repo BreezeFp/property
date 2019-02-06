@@ -61,7 +61,6 @@ public class AuthServiceImpl implements com.lysj.property.security.service.AuthS
         userToAdd.setPassword(encoder.encode(rawPassword));
         userToAdd.setLastPasswordResetDate(new Date());
         userMapper.insert(userToAdd);
-        //TODO:注册时添加默认角色
         roleMapper.addDefaultRole(userToAdd.getId());
         return userToAdd;
     }
