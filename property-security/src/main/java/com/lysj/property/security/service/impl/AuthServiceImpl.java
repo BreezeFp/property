@@ -1,7 +1,7 @@
-package com.lysj.property.security.service;
+package com.lysj.property.security.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.lysj.property.dao.sys.UserMapper;
+import com.lysj.property.dao.sys.*;
 import com.lysj.property.entity.sys.User;
 import com.lysj.property.security.config.JwtProperties;
 import com.lysj.property.security.entity.SecurityUser;
@@ -24,12 +24,13 @@ import java.util.Date;
  * @date 2019/1/25
  */
 @Service
-public class AuthServiceImpl implements AuthService {
-
+public class AuthServiceImpl implements com.lysj.property.security.service.AuthService {
+    
     private AuthenticationManager authenticationManager;
     private UserDetailsService    userDetailsService;
     private JwtTokenUtil          jwtTokenUtil;
     private UserMapper            userMapper;
+    private RoleMapper            roleMapper;
 
     @Autowired
     private JwtProperties jwtProperties;
@@ -39,11 +40,13 @@ public class AuthServiceImpl implements AuthService {
             AuthenticationManager authenticationManager,
             @Qualifier("customUserService") UserDetailsService userDetailsService,
             JwtTokenUtil jwtTokenUtil,
-            UserMapper userMapper) {
+            UserMapper userMapper,
+            RoleMapper roleMapper) {
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
         this.jwtTokenUtil = jwtTokenUtil;
         this.userMapper = userMapper;
+        this.roleMapper = roleMapper;
     }
 
     @Override
@@ -58,7 +61,7 @@ public class AuthServiceImpl implements AuthService {
         userToAdd.setPassword(encoder.encode(rawPassword));
         userToAdd.setLastPasswordResetDate(new Date());
         userMapper.insert(userToAdd);
-        //TODO:注册时添加默认角色
+        roleMapper.addDefaultRole(userToAdd.getId());
         return userToAdd;
     }
 

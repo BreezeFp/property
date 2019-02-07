@@ -3,12 +3,11 @@ server:
   port: 8088
 
 spring:
+  profiles:
+    active: local
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:postgresql://localhost:5432/property
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: 123456
     druid:
       #初始化连接大小
       initialSize: 8
@@ -23,6 +22,9 @@ spring:
       #关闭空闲连接超时时间
       remove-abandoned-timeout: 1800
       filters: stat,config
+  flyway:
+    baseline-on-migrate: true
+    clean-on-validation-error: true
 
 property:
   jwt:
@@ -48,3 +50,37 @@ logging:
   level:
     org.springfromework.web: debug
     com.lysj.property: debug
+mybatis-plus:
+  type-enums-package: com.lysj.property.entity.enums
+
+---
+spring:
+  profiles: local
+  flyway:
+    out-of-order: false
+    clean-disabled: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/property
+    username: property
+    password: 123456
+
+---
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:postgresql://localhost:5432/property
+    username: property
+    password: 123456
+  flyway:
+    out-of-order: false
+    clean-disabled: true
+
+---
+spring:
+  profiles: produce
+  datasource:
+    url: jdbc:postgresql://localhost:5432/property
+    username: property
+    password: 123456
+  flyway:
+    clean-disabled: false

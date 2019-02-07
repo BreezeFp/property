@@ -7,5 +7,8 @@ dependencies {
     compile project(':property-security')
     compile project(':property-admin-service')
     compile 'org.springframework.boot:spring-boot-starter-web'
+    runtime 'org.flywaydb:flyway-gradle-plugin:5.2.4'
 //    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    
+    testCompile 'org.springframework.security:spring-security-test'
 }

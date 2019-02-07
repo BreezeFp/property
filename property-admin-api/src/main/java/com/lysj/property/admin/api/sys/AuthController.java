@@ -1,10 +1,11 @@
 package com.lysj.property.admin.api.sys;
 
+import com.lysj.property.admin.api.BaseController;
 import com.lysj.property.security.config.JwtProperties;
 import com.lysj.property.security.entity.SecurityUser;
 import com.lysj.property.security.service.AuthService;
-import com.lysj.property.security.service.JwtAuthenticationRequest;
-import com.lysj.property.security.service.JwtAuthenticationResponse;
+import com.lysj.property.security.entity.JwtAuthenticationRequest;
+import com.lysj.property.security.entity.JwtAuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2019/1/25
  */
 @RestController
-public class AuthController {
+public class AuthController extends BaseController {
 
     @Autowired
     AuthService authService;

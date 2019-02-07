@@ -3,6 +3,7 @@ package com.lysj.property.entity.sys;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.lysj.property.entity.enums.GenderEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,8 @@ public class User {
     private String password;
 
     private String nickname;
+
+    private GenderEnum gender;
 
     private Date lastPasswordResetDate;
 

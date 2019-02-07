@@ -17,7 +17,7 @@ public class AuthControllerTest extends BaseTest {
     public void register() throws Exception {
 
         mockMvc.perform(post("/auth/register")
-                .param("username", "admin")
+                .param("username", "user")
                 .param("password", "111111"))
                 .andExpect(status().isOk());
 
@@ -25,9 +25,13 @@ public class AuthControllerTest extends BaseTest {
 
     @Test
     public void login() throws Exception {
+    
+        //language=JSON
+        String json = "{\"username\": \"admin\",\"password\": \"111111\"}";
+        
         MvcResult result = mockMvc.perform(post("/auth/login")
-                .param("username", "admin")
-                .param("password", "111111"))
+                .contentType(org.springframework.http.MediaType.APPLICATION_JSON)
+                .content(json))
                 .andExpect(status().isOk())
                 .andReturn();
         System.out.println(result.getResponse().getContentAsString());
