@@ -1,4 +1,3 @@
-/* eslint no-undef:0, no-unused-expressions:0, array-callback-return:0, arrow-parens: 0, no-else-return: 0 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';

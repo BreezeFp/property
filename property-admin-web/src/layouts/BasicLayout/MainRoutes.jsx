@@ -4,7 +4,6 @@ import { Redirect, Switch, Route } from 'react-router-dom';
 import NotFound from '../../components/NotFound';
 import { asideMenuConfig } from '../../menuConfig';
 import { routerData } from '../../routerConfig';
-
 import Authorized from '../../utils/Authorized';
 
 const { AuthorizedRoute } = Authorized;

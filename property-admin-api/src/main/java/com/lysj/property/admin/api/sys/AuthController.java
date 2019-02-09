@@ -1,6 +1,7 @@
 package com.lysj.property.admin.api.sys;
 
 import com.lysj.property.admin.api.BaseController;
+import com.lysj.property.common.DataResponse;
 import com.lysj.property.security.config.JwtProperties;
 import com.lysj.property.security.entity.SecurityUser;
 import com.lysj.property.security.service.AuthService;
@@ -34,11 +35,11 @@ public class AuthController extends BaseController {
     }
 
     @PostMapping(value = "${property.jwt.route.authentication.login}")
-    public ResponseEntity<?> login(@RequestBody JwtAuthenticationRequest request) throws AuthenticationException {
+    public DataResponse<?> login(@RequestBody JwtAuthenticationRequest request) throws AuthenticationException {
         final String token = authService.login(request.getUsername(),request.getPassword());
 
         // Return the token
-        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+        return DataResponse.success(new JwtAuthenticationResponse(token));
     }
 
     @GetMapping(value = "${property.jwt.route.authentication.refresh}")
